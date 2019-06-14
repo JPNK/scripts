@@ -1,0 +1,2 @@
+# scripts
+Exo scripts Linux
