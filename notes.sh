@@ -6,25 +6,17 @@ let "somme = 0"
 while [ $i -le $max ] 
 do
 read -p "Entrez note $i/$max  " note
- while [ $note -lt 0 ] || [ $note -gt 20] 
- do
-    echo "Entrez note entre 0 et 20"
-done
-
-while [ $note != [0-9]] do ;
-    echo "Entrez une valeur numérique"
-done
-
-
-
-
+	 if [ $note -lt 0 ] || [ $note -gt 20 ] 
+	 then
+	    read -p "Entrez note entre 0 et 20" $note
+	 fi
 let "somme += note"
 let "++i"
 done
 
 let "moyenne = $somme/$max"
 
-        if [ $moyenne -lt 10 ]
+        if [ $moyenne -lt 10 ] 
         then
                 echo "MOYENNE: $moyenne, MENTION: echec"
         elif [ $moyenne -lt 12  ]
@@ -37,5 +29,16 @@ let "moyenne = $somme/$max"
         then
                 echo "MOYENNE: $moyenne, MENTION: Bien"
         elif [ $moyenne -le 20 ]
-                                                                                                                             12,8         Haut
+        then
+                echo "MOYENNE: $moyenne, MENTION: Très Bien"
+        elif [ $moyenne=[a-z] ]
+        then
+                echo "ERREUR"
+	else
+		echo "La moyenne doit être comprise entre 0 et 20"
+	fi
+
+
+
+
 
